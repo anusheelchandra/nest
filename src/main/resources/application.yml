@@ -1,0 +1,9 @@
+server:
+    port: 8800
+minio:
+    accessKey: XyFp8MzwWYoxiMBM
+    secretKey: Wy4sDZVbnGNP7Qv9gaPfuqjkVkibtFMc
+    endpoint: http://localhost:9900
+spring:
+    application:
+        name: nest

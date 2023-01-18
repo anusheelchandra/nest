@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  minio-db:
+    image: 'bitnami/minio:latest'
+    environment:
+      - MINIO_ROOT_USER=minio-root-user
+      - MINIO_ROOT_PASSWORD=minio-root-password
+    ports:
+      - "9900:9900"
+      - '9001:9001'
+    volumes:
+      - objectdb::/data
+volumes:
+  objectdb:
