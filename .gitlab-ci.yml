@@ -1,0 +1,31 @@
+image: docker:20.10.17
+
+stages:
+  - build_image
+
+
+build_image:
+  before_script:
+    - "docker info"
+    - "echo $CI_COMMIT_REF_NAME"
+    - "wget -O /etc/apk/keys/amazoncorretto.rsa.pub  https://apk.corretto.aws/amazoncorretto.rsa.pub"
+    - "echo \"https://apk.corretto.aws/\" >> /etc/apk/repositories"
+    - "apk update && apk add curl && apk add git && apk add openjdk19 && apk add perl-xml-twig"
+    - "curl -O http://mirror.easyname.ch/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz"
+    - "mkdir /opt/maven"
+    - "tar -xvzf apache-maven-3.6.3-bin.tar.gz -C /opt/maven"
+    - "curl --insecure -O https://gitlab/innovation/crux-devops/raw/master/igtcrux-devops-components/resources/settings.xml"
+    - "cp settings.xml /opt/maven/apache-maven-3.6.3/conf/"
+    - "ARTIFACT_VERSION=$(xml_grep 'project/version' pom.xml --text_only)"
+    - "export PATH=$PATH:/opt/maven/apache-maven-3.6.3/bin/"
+  stage: build_image
+  only:
+    - pushes
+    - web
+  tags:
+    - crux
+  except:
+    - tags
+  script: 
+    - "mvn clean package deploy -DskipTests -U"
+    - "docker build ./docker --network gitlab-network --no-cache --force-rm --build-arg ARTIFACT_VERSION=$ARTIFACT_VERSION --tag fmm/nest:$CI_COMMIT_REF_SLUG"
