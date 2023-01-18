@@ -1,1 +1,1 @@
-docker run -d --name minio --restart always -p 9900:9900 -p 9901:9001 --volume /data/objectdb:/data --env MINIO_ROOT_USER=minio-root-user --env MINIO_ROOT_PASSWORD=minio-root-password bitnami/minio:latest
+docker run -d --name minio --restart always --network gcd-network -p 9900:9900 -p 9901:9001 --volume /data/objectdb:/data --env MINIO_ROOT_USER=minio-root-user --env MINIO_ROOT_PASSWORD=minio-root-password bitnami/minio:latest
