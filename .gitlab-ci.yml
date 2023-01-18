@@ -10,7 +10,7 @@ build_image:
     - "echo $CI_COMMIT_REF_NAME"
     - "wget -O /etc/apk/keys/amazoncorretto.rsa.pub  https://apk.corretto.aws/amazoncorretto.rsa.pub"
     - "echo \"https://apk.corretto.aws/\" >> /etc/apk/repositories"
-    - "apk update && apk add curl && apk add git && apk add openjdk19 && apk add perl-xml-twig"
+    - "apk update && apk add curl && apk add git && apk add perl-xml-twig"
     - "curl -O http://mirror.easyname.ch/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz"
     - "mkdir /opt/maven"
     - "tar -xvzf apache-maven-3.6.3-bin.tar.gz -C /opt/maven"
