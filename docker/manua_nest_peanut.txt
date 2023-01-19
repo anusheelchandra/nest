@@ -1,1 +1,1 @@
-docker run -it --name nest -p 8800:8800 --volume  /data/nest/config/:/config/ --network gcd-network  fmm/nest:THE_BRANCH_NAME_GOES_HERE
+docker run -d --name nest -p 8800:8800 --volume  /data/nest/config/:/config/ --network gcd-network  fmm/nest:master
