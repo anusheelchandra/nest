@@ -1,9 +1,18 @@
 server:
     port: 8800
 minio:
-    accessKey: XyFp8MzwWYoxiMBM
-    secretKey: Wy4sDZVbnGNP7Qv9gaPfuqjkVkibtFMc
-    endpoint: http://localhost:9900
+    accessKey: 5Uo4Ob0gye2GAm27
+    secretKey: l5x6ojHV4q3usO8u6No2yLt9aBBfdeLR
+    endpoint: http://peanut.rdswiss.ch:9000
+    bucketName: 730083710000grtw-fin
 spring:
     application:
         name: nest
+
+logging:
+    level:
+        org:
+            springframework:
+                web:
+                    servlet:
+                        DispatcherServlet: DEBUG
