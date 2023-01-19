@@ -61,7 +61,9 @@ public class MinioRepository {
             log.error(exception.getMessage());
           }
         }
-        attachmentNameByIdentifier.put(id.replace("/", ""), names);
+        if (!names.isEmpty()) {
+          attachmentNameByIdentifier.put(id.replace("/", ""), names);
+        }
       }
     return attachmentNameByIdentifier;
   }

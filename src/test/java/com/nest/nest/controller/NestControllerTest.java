@@ -32,7 +32,7 @@ public class NestControllerTest {
     var mvcResult =
         mockMvc
             .perform(
-                MockMvcRequestBuilders.get("/api/nest/objectmeta/BA0073800000XDBW")
+                MockMvcRequestBuilders.get("/api/nest/objectmeta/BA0073800000XDBW,CA0073800000XDBW,TEST")
                     .contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andReturn();
