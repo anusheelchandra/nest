@@ -1,0 +1,11 @@
+server:
+  ssl:
+    enabled: true
+    key-store-type: JKS
+    enabled-protocols: TLSv1.3,TLSv1.2
+    key-store: C:/Workbench/crux/certs/gcd.jks
+    key-store-password: gcdpwd
+    key-alias: gcd
+    trust-store: C:/Workbench/crux/certs/gcd.truststore
+    trust-store-password: gcdpwd
+    trust-store-type: JKS

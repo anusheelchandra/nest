@@ -8,6 +8,10 @@ minio:
 spring:
     application:
         name: nest
+nest:
+  config:
+    corsAllowedOrigins: https://localhost:4200;https://peanut.rdswiss.ch
+
 
 logging:
     level:
