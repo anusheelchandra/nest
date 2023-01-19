@@ -113,4 +113,17 @@
 		</plugins>
 	</build>
 
+	<distributionManagement>
+		<snapshotRepository>
+			<id>crux.snapshots</id>
+			<name>Crux Snapshots Repo</name>
+			<url>https://repo.rdswiss.ch/artifactory/crux-snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>crux.releases</id>
+			<name>Crux Releases repo</name>
+			<url>https://repo.rdswiss.ch/artifactory/crux-releases</url>
+		</repository>
+	</distributionManagement>
+
 </project>
