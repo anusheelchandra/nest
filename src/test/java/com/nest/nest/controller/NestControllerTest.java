@@ -44,7 +44,7 @@ public class NestControllerTest {
     var mvcResult =
         mockMvc
             .perform(
-                MockMvcRequestBuilders.get("/api/nest/object/BA0073800000XDBW-tnt-Invoice.pdf")
+                MockMvcRequestBuilders.get("/api/nest/object/BA0073800000XDBW/tnt-Invoice.pdf")
                     .contentType(MediaType.APPLICATION_OCTET_STREAM_VALUE))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andReturn();

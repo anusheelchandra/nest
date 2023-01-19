@@ -26,9 +26,9 @@ public class NestController {
         minioService.getObjectMetaResponseDto(messageIdentifiers), HttpStatus.OK);
   }
 
-  @GetMapping(value = "/object/{objectId}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-  public ResponseEntity<byte[]> getObject(@PathVariable("objectId") String objectId) {
-    return new ResponseEntity<>(minioService.getObject(objectId), HttpStatus.OK);
+  @GetMapping(value = "/object/{identifier}/{objectId}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+  public ResponseEntity<byte[]> getObject(@PathVariable("identifier") String identifier, @PathVariable("objectId") String objectId) {
+    return new ResponseEntity<>(minioService.getObject(identifier + "/" + objectId), HttpStatus.OK);
   }
 
   @PostMapping(

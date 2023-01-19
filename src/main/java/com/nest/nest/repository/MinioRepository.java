@@ -44,27 +44,25 @@ public class MinioRepository {
                 // NestApiConstant.OBJECT_ATTACHMENT_REFERENCE))
                 .build());
     Map<String, List<String>> attachmentNameByIdentifier = new HashMap<>();
-    for (Result<Item> item : results) {
-      try {
-        var object = item.get();
-        if (ids.contains(object.objectName())) {
-          var names =
-              Arrays.asList(
-                  object
-                      .userMetadata()
-                      .get(NestApiConstant.OBJECT_ATTACHMENT_NAMES)
-                      .split(
-                          NestApiConstant.MESSAGE_IDENTIFIER_SEPARATOR)); // list of attachmentNames
-          attachmentNameByIdentifier.put(object.objectName(), names);
+
+      for (var id: ids) {
+        List<String> names = new ArrayList<>();
+        for (Result<Item> item : results) {
+          try {
+            var object = item.get();
+            if (object.objectName().contains(id) && object.objectName().contains(".")) {
+              names.add(object.objectName());
+            }
+          } catch (Exception exception) {
+            log.error(
+                    String.format(
+                            "Error fetching metadata for bucket : %s and identifier : %s",
+                            bucketName, identifiers.toString()));
+            log.error(exception.getMessage());
+          }
         }
-      } catch (Exception exception) {
-        log.error(
-            String.format(
-                "Error fetching metadata for bucket : %s and identifier : %s",
-                bucketName, identifiers.toString()));
-        log.error(exception.getMessage());
+        attachmentNameByIdentifier.put(id.replace("/", ""), names);
       }
-    }
     return attachmentNameByIdentifier;
   }
 

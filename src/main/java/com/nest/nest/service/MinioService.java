@@ -22,14 +22,8 @@ public class MinioService {
   private final MinioConfig minioConfig;
 
   public ObjectMetaResponseDto getObjectMetaResponseDto(List<String> messageIdentifiers) {
-    var identifiers =
-        messageIdentifiers.stream()
-            .map(identifier -> identifier + NestApiConstant.TEXT_FILE_SUFFIX)
-            .collect(Collectors.toList());
     return new ObjectMetaResponseDto(
-        minioRepository.getMetadataByIdentifiers(minioConfig.getBucketName(), identifiers));
-    // return new ObjectMetaResponseDto(Map.of(messageIdentifiers.get(0),
-    // List.of("BA0073800000XDBW-tnt-Invoice.pdf")));
+        minioRepository.getMetadataByIdentifiers(minioConfig.getBucketName(), messageIdentifiers));
   }
 
   public byte[] getObject(String objectId) {
