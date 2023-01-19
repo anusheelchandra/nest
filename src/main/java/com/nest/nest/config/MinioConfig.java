@@ -2,12 +2,8 @@ package com.nest.nest.config;
 
 import io.minio.MinioClient;
 import lombok.Getter;
-<<<<<<< src/main/java/com/nest/nest/config/MinioConfig.java
-import org.springframework.boot.context.properties.ConfigurationProperties;
-=======
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
->>>>>>> src/main/java/com/nest/nest/config/MinioConfig.java
 import org.springframework.context.annotation.Configuration;
 
 @Getter
